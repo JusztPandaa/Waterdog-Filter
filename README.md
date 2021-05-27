@@ -11,3 +11,16 @@ There is some blacklisted sentences. I hope they are useful.
 # Permissons 
 1. There is no bypass
 2. Do not resell. It's a public repository and if you find anyone doing so please message me
+
+
+# Adding a blacklist
+To add a blacklist use the following.
+```
+the "Blacklist" is an array. To add to that list of arrays do 
+Blacklist.add("word");
+```
+or
+```
+Blacklist.add("sentence is kool");
+which allows sentences to be blacklisted
+```

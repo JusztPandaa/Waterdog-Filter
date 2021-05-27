@@ -26,10 +26,7 @@ public class Filter extends Plugin {
 
          // to add to the array you can just do something in the config like blacklisted words or something. or do Blacklist.add("word");
         Blacklist.add("fuck");
-        Blacklist.add("nigger");
         Blacklist.add("bitch");
-        Blacklist.add("nigga");
-        Blacklist.add("cunt");
         Blacklist.add("ass");
         Blacklist.add("dumbass");
         Blacklist.add("ez")

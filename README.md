@@ -16,11 +16,12 @@ There is some blacklisted sentences. I hope they are useful.
 # Adding a blacklist
 To add a blacklist use the following.
 ```
-the "Blacklist" is an array. To add to that list of arrays do 
+the "Blacklist" is an array. To add to that array do 
 Blacklist.add("word");
 ```
 or
 ```
+To add a blacklisted sentence do the following.
 Blacklist.add("sentence is kool");
-which allows sentences to be blacklisted
+
 ```

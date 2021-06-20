@@ -2,54 +2,50 @@ package dev.pandaa;
 
 import dev.waterdog.waterdogpe.plugin.Plugin;
 import dev.waterdog.waterdogpe.player.ProxiedPlayer;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import dev.waterdog.waterdogpe.utils.Configuration;
 import dev.waterdog.waterdogpe.event.defaults.PlayerChatEvent;
 
-
+import java.util.List;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.util.stream.Collectors;
 
 public class Filter extends Plugin {
 
-    @Override
-    public void onEnable(){
+@Override
+ public void onEnable(){
+     createDefaultConfig();
+     getProxy().getEventManager().subscribe(PlayerChatEvent.class, this::onChat);
+ }
 
-        this.getProxy().getEventManager().subscribe(PlayerChatEvent.class, this::onChat);
-
-    }
-
-    public void onChat(PlayerChatEvent e){
-
-        List<String> Blacklist = new ArrayList<>();
-
-         // to add to the array you can just do something in the config like blacklisted words or something. or do Blacklist.add("word");
-        Blacklist.add("fuck");
-        Blacklist.add("bitch");
-        Blacklist.add("ass");
-        Blacklist.add("dumbass");
-        Blacklist.add("ez")
-        Blacklist.add("suck ass");
-        Blacklist.add("fuck u");
-        Blacklist.add("fuck you");
-        Blacklist.add("pp");
-        Blacklist.add("suck pp");
-        String Message = (e.getMessage()).toLowerCase();
-        ProxiedPlayer sender = e.getPlayer();
-        String Censored = "§c[FILTER]: §7Please do not use that word.";
-        Boolean status = null;
-        for(String words : Blacklist){
-            if(Message.contains(words)){
-                status = true;
-            } else {
-                status = false;
+public void onChat(PlayerChatEvent e){
+      List<String> Blacklist = getConfig().getStringList("blacklisted-words");
+      String Message = (e.getMessage()).toLowerCase();
+      ProxiedPlayer sender = e.getPlayer();
+   
+      for(String words : Blacklist){
+         if(Message.contains(words)){
+              e.setCancelled(true);
+              sender.sendMessage(getConfig().getString("blocked"));
             }
         }
-        if(status){
-            e.setCancelled(true);
-            sender.sendMessage(Censored);
-        }
-        return;
     }
+    
+private void createDefaultConfig() {
+     if (!getDataFolder().exists())
+          getDataFolder().mkdir();
+       
+     File file = new File(getDataFolder(), "config.yml");
+
+     if (!file.exists()) {
+         try (InputStream in = getResourceFile("config.yml")) {
+             Files.copy(in, file.toPath());
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
+      }
+  }
+
 }

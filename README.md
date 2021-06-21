@@ -16,12 +16,8 @@ There is some blacklisted sentences. I hope they are useful.
 # Adding a blacklist
 To add a blacklist use the following.
 ```
-the "Blacklist" is an array. To add to that array do 
-Blacklist.add("word");
+The config.yml has been created you can change and add blacklisted messages and links.
 ```
-or
-```
-To add a blacklisted sentence do the following.
-Blacklist.add("sentence is kool");
+# New blacklist command coming soon!
 
-```
+✅ This will allow you to add a blacklist while ingame!

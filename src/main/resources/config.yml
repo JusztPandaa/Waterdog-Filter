@@ -1,0 +1,7 @@
+Filter-Message: "[§cFilter§7]§f: §cHey can you not use that word!"
+
+Blacklisted-Words:
+  - "put blacklisted words here."
+  - "put word"
+
+# can block links as well!

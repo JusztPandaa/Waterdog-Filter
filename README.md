@@ -3,7 +3,7 @@ A chat filter to block what waterdog doesn't.
 
 # Config
 ```
-At the moment there is no config. There will hopefully be one soon. 
+New config.yml
 Please dont be harsh feel free to edit the code for personal use.
 ```
 There is some blacklisted sentences. I hope they are useful.
